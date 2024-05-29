@@ -1,0 +1,42 @@
+::ng-deep .dialog-box {
+    background-color: var(--primary) !important;
+    width: 500px;
+}
+.header {
+    background-color: var(--secondary);
+}
+.mat-expansion-panel-header-description {
+    flex-grow: 1;
+}
+.accordion {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+.question > * {
+    margin-top: 10px;
+    width: 400px;
+}
+.choice {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.question-text,
+.choice > * {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+.validity-icon {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.margin-actions > * {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}

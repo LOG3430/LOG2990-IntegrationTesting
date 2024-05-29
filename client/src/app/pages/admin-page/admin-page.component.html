@@ -1,0 +1,14 @@
+<app-header>
+    <h1 title>Espace administratif</h1>
+    <div left-buttons>
+        <button mat-icon-button matTooltip="Accueil" color="accent" routerLink="/home"><mat-icon>home</mat-icon></button>
+    </div>
+</app-header>
+<body>
+    <div class="admin-options">
+        <button mat-raised-button color="primary" routerLink="/admin/quiz/create">Créer un nouveau jeu</button>
+        <button mat-raised-button color="primary" routerLink="/admin/quiz/catalog">Gestionnaire de jeux</button>
+        <button mat-raised-button color="primary" routerLink="/admin/questions/catalog">Banque de questions</button>
+        <button mat-raised-button color="primary" routerLink="/admin/quiz/history">Historique de jeux</button>
+    </div>
+</body>

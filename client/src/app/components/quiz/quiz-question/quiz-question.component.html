@@ -1,0 +1,54 @@
+<div class="dialog-box">
+    <h1 class="header" mat-dialog-title>
+        {{ isModifying ? 'Modification' : 'Création' }} d'une nouvelle question:
+    </h1>
+    <div mat-dialog-content class="margin">
+        <form (keydown.enter)="$event.preventDefault()">
+            <div>
+                <mat-form-field class="name-input">
+                    <mat-label>Question : </mat-label>
+                    <textarea matInput
+                        (keyup)="onKeyQuestion($event)"
+                        #message
+                        maxlength="{{maxAnswerLength()}}"
+                        [formControl]="formControls.title">{{getQuestion().text}}</textarea>
+                    <mat-hint align="end">{{message.value.length}} / {{maxAnswerLength()}}</mat-hint>
+                    <mat-error *ngIf="formControls.title.hasError('required')">Champ obligatoire</mat-error>
+                    <mat-error *ngIf="formControls.title.hasError('whitespace')">Champ obligatoire non vide</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="point-input">
+                    <mat-label>Nombre de points: </mat-label>
+                    <select matNativeControl #scores (change)="onSelected(scores.value)">
+                        <option
+                            *ngFor="let point of pointsValues()"
+                            [attr.selected]="getQuestion().points === point ? true : null"
+                        >
+                            {{ point }}
+                        </option></select
+                    ><br />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-slide-toggle (change)="setTypeQuestion()" [checked]="!isMCQ()">Type de question: {{getQuestion().type}}</mat-slide-toggle>
+            </div>
+            <div *ngIf="isMCQ(); else elseBlock">
+                <div *ngIf="getQuestion().choices">
+                    <app-mcq-panel></app-mcq-panel>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+            </ng-template>
+        </form>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button class="margin-actions close" (click)="onNoClick()">Annuler</button>
+        <button mat-raised-button class="margin-actions send" color="primary" 
+                [disabled]="!isValid(getQuestion())"
+                (click)="confirm()"
+            >
+            {{ isModifying ? 'Modifier' : 'Ajouter' }} la question
+        </button>
+    </div>
+</div>

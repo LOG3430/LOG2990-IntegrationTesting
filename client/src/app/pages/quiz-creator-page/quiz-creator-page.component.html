@@ -1,0 +1,82 @@
+<app-header>
+    <h1 title>{{ isModifying() ? 'Modification' : 'Création' }} d'un jeu-questionnaire</h1>
+    <div left-buttons>
+        <button mat-icon-button matTooltip="Quiz Catalog" color="accent" routerLink="/admin/quiz/catalog">
+            <mat-icon>arrow_circle_left</mat-icon>
+        </button>
+    </div>
+</app-header>
+
+<form class="quiz-creation-form">
+    <mat-form-field class="quiz">
+        <mat-label>Nom du jeu: </mat-label>
+        <input matInput (keyup)="onKeyTitle($event)" #input maxlength="{{ maxLengthQuiz }}" [formControl]="formControls.title" />
+        <mat-hint align="end">{{ input.value.length }}/{{ maxLengthQuiz }}</mat-hint>
+        <mat-error *ngIf="formControls.title.hasError('required')">Champ obligatoire</mat-error>
+        <mat-error *ngIf="formControls.title.hasError('whitespace')">Champ obligatoire non vide</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="quiz">
+        <mat-label>Description: </mat-label>
+        <textarea
+            matInput
+            (keyup)="onKeyDescription($event)"
+            #description
+            maxlength="{{ maxLengthDescription }}"
+            [formControl]="formControls.description"
+        ></textarea>
+        <mat-hint align="end">{{ description.value.length }}/{{ maxLengthDescription }}</mat-hint>
+        <mat-error *ngIf="formControls.description.hasError('required')">Champ obligatoire</mat-error>
+        <mat-error *ngIf="formControls.description.hasError('whitespace')">Champ obligatoire non vide</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="quiz">
+        <mat-label>Temps (en secondes): </mat-label>
+        <select matNativeControl id="time-input" name="timeInput" #seconds (change)="onSelected(seconds.value)">
+            <option *ngFor="let slot of durationValues()" [attr.selected]="getDuration() === slot ? true : null">{{ slot }}</option></select
+        ><br />
+    </mat-form-field>
+
+    <h2>Liste des questions:</h2>
+
+    <div>
+        <mat-accordion cdkDropList (cdkDropListDropped)="dropQuestion($event)">
+            <div class="question" cdkDrag *ngFor="let question of getQuestions(); index as i">
+                <button mat-icon-button type="button" cdkDragHandle>
+                    <mat-icon>reorder</mat-icon>
+                </button>
+                <app-question-panel [question]="question" [index]="i">
+                    <div actions>
+                        <button mat-icon-button matTooltip="Modifier" color="accent" (click)="modifyQuestion(i, $event)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Supprimer" color="accent" (click)="removeQuestion(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Enregistrer" color="accent" (click)="addQuestionToDb(i, $event)">
+                            <mat-icon>cloud_upload</mat-icon>
+                        </button>
+                    </div>
+                </app-question-panel>
+            </div>
+        </mat-accordion>
+    </div>
+
+    <div class="add-question">
+        <button mat-raised-button color="accent" (click)="openQuestionDialog()">Ajouter une nouvelle question</button>
+        <button mat-raised-button color="accent" (click)="pickQuestions()">Banque de questions</button>
+    </div>
+
+    <h3>Importer un jeu</h3>
+
+    <form method="post">
+        <div>
+            <input type="file" id="file" name="file" accept=".json" (change)="onFileSelected($event)" ref="filePath" />
+        </div>
+    </form>
+
+    <button mat-raised-button class="add-quiz" color="primary" [disabled]="!isValid()" (click)="submit()">
+        {{ isModifying() ? 'Modifier' : 'Créer' }} le jeu
+    </button>
+    <h2 class="rules" *ngIf="!isValid()">Veuillez remplir les champs nécessaires et avoir au moins 1 question valide.</h2>
+</form>

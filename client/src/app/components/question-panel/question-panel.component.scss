@@ -1,0 +1,34 @@
+.mat-expansion-panel {
+    width: 100%;
+    margin: 5px 0px;
+}
+
+.mat-expansion-panel-header-title {
+    font-weight: bold;
+}
+
+.mat-expansion-panel-header-description {
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.choice {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.validity-icon {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.question-text {
+    word-break: break-word;
+}

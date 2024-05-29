@@ -1,0 +1,93 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+@include mat.core();
+
+$indigo-pink-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$teal-palette, 600),
+            accent: mat.define-palette(mat.$pink-palette, 600),
+            warn: mat.define-palette(mat.$red-palette),
+        ),
+    )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($indigo-pink-theme);
+
+.indigo-pink-theme {
+    // Nothing to do. This is the default theme
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --text: rgb(26, 35, 126);
+    --text-background: rgb(213, 215, 242);
+    --primary: rgb(123, 206, 193);
+    --lightprimary: rgb(197, 234, 228);
+    --secondary: rgb(36, 143, 130);
+    --accent: rgb(228, 44, 105);
+    --dark-background: rgb(242, 161, 204);
+    --background: rgb(250, 220, 227);
+    --light-background: rgb(255, 245, 247);
+    --alternative-0: rgb(186, 227, 219);
+    --alternative-1: rgb(217, 255, 250);
+    --highlight: rgb(184, 209, 204);
+    --right-answer: green;
+    --wrong-answer: red;
+    --star:rgb(212, 168, 35);
+
+    --header-height: 100px;
+
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    color: var(--text);
+    margin: 0 15px;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--background);
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.shortenable,
+.panel-title {
+    display: inline-block !important;
+    align-self: center;
+    min-width: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.breakable,
+.question-text,
+.choice > * {
+    word-wrap: break-word;
+    word-break: break-word;
+}

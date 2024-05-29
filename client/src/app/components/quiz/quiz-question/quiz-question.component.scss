@@ -1,0 +1,24 @@
+// To remove the automatic bottom margin made by mat-form-fields, 
+// we need to remove 1,25 em 
+// source: https://stackoverflow.com/questions/53684763/how-to-remove-space-bottom-mat-form-field
+::ng-deep .dialog-box {
+    background-color: var(--primary) !important;
+    width: 500px;
+  }
+.header {
+background-color: var(--secondary);
+}
+.close .send {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.name-input {
+    width: 100%;
+    margin-top: 25px;
+    
+}
+.point-input {
+    width: 100%;
+}
+
+

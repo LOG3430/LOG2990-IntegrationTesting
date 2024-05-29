@@ -1,0 +1,13 @@
+<app-header>
+    <h1 title>Créer une partie</h1>
+    <div left-buttons>
+        <button mat-icon-button matTooltip="Accueil" color="accent" routerLink="/home"><mat-icon>home</mat-icon></button>
+    </div>
+</app-header>
+
+<app-random-mode-selector></app-random-mode-selector>
+<mat-accordion>
+    <app-quiz-panel *ngFor="let quiz of getGames()" [quiz]="quiz">
+        <app-quiz-details description [quiz]="quiz"></app-quiz-details>
+    </app-quiz-panel>
+</mat-accordion>

@@ -1,0 +1,18 @@
+<div class="header">
+    <div class="gamecode">CODE: {{ gameCode() }}</div>
+    <div class="start-buttons">
+        <button mat-icon-button class="start-button" [matTooltip]="getTooltip()" color="primary" (click)="toggleLock()" *ngIf="isOrganiser()">
+            <mat-icon>{{ isUnlocked() ? 'lock_open' : 'lock_outline' }}</mat-icon>
+        </button>
+        <button class="start-button" mat-raised-button color="primary" (click)="startGame()" [disabled]="!canStart()" *ngIf="isOrganiser()">
+            Démarrer la partie
+        </button>
+    </div>
+</div>
+
+<div class="empty" *ngIf="getPlayers().length === 0">Il n'y a personne ici :(</div>
+
+<div class="player" *ngFor="let p of getPlayers()">
+    <div class="name" [ngClass]="{ isMe: isMe(p) }">{{ p }}</div>
+    <button mat-icon-button matTooltip="Bannir" color="accent" (click)="ban(p)" *ngIf="isOrganiser()"><mat-icon>block</mat-icon></button>
+</div>

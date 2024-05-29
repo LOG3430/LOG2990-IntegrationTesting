@@ -1,0 +1,16 @@
+<div class="container">
+    <h1 class="title">{{ isMCQ() ? 'Les bonnes réponses étaient:' : ' Vous avez obtenu: ' }}</h1>
+
+    <ul>
+        <li class="answer" *ngFor="let answer of questionResults.goodAnswers">
+            {{ answer }}
+        </li>
+    </ul>
+
+    <p class="points">Nombre de points: {{ questionResults.points }}</p>
+    <div class="bonus" *ngIf="questionResults.hasBonus">
+        <mat-icon>star</mat-icon>
+        <p>Vous avez obtenu le bonus!</p>
+        <mat-icon>star</mat-icon>
+    </div>
+</div>

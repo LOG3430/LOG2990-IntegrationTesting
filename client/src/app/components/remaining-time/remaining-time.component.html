@@ -1,0 +1,4 @@
+<div id="timer" *ngIf="getTime() !== undefined" [ngClass]="{panicking: isPanicking()}">
+    <mat-icon>hourglass_bottom</mat-icon>
+    <p>{{ getTime() }}</p>
+</div>

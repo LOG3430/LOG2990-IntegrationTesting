@@ -1,0 +1,18 @@
+<mat-expansion-panel [style.background-color]="color">
+    <mat-expansion-panel-header>
+        <mat-panel-title class="shortenable title">Q{{ index + 1 }} - {{ question.text }}</mat-panel-title>
+
+        <mat-panel-description>
+            {{ question.points }} points - {{ question.type }}
+            <ng-content actions></ng-content>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="question-text"><b>Question:</b> {{ question.text }}</div>
+    <div class="choice" *ngFor="let choice of question.choices; index as i">
+        <div>{{ i + 1 }}. {{ choice.text }}</div>
+        <div class="validity-icon">
+            <mat-icon *ngIf="choice.isCorrect" style="color: var(--right-answer)">check</mat-icon>
+            <mat-icon *ngIf="!choice.isCorrect" style="color: var(--wrong-answer)">close</mat-icon>
+        </div>
+    </div>
+</mat-expansion-panel>

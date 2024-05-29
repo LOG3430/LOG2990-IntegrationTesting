@@ -1,0 +1,23 @@
+<app-header>
+    <h1 title>Joindre une partie</h1>
+    <div left-buttons>
+        <button mat-icon-button matTooltip="Accueil" color="accent" routerLink="/home"><mat-icon>home</mat-icon></button>
+    </div>
+</app-header>
+<form>
+    <div class="content">
+        <div class="items">
+            <mat-form-field>
+                <mat-label>Entrer le numero du jeu à 4 chiffres</mat-label>
+                <input matInput #id [maxlength]="idLength" placeholder="Ex. 1234" [(ngModel)]="playerInfos.roomId" name="roomId" />
+                <mat-hint align="end">{{ id.value.length }}/{{ idLength }}</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Entrer nom d'utilisateur</mat-label>
+                <input matInput #username [maxlength]="maxUsernameLength" [(ngModel)]="playerInfos.username" name="username"/>
+                <mat-hint align="end">{{ username.value.length }}/{{ maxUsernameLength }}</mat-hint>
+            </mat-form-field>
+            <button type="submit" mat-raised-button class="join" color="primary" (click)="join()">Joindre la partie</button>
+        </div>
+    </div>
+</form>

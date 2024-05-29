@@ -1,0 +1,48 @@
+.container {
+    background-color: var(--primary);
+    height: 100%;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+}
+
+ul {
+    padding: 0;
+    width: 80%;
+}
+
+li {
+    width: 100%;
+    background-color: var(--light-background);
+    text-align: center;
+
+    list-style-type: none;
+    padding: 5px;
+    margin: 5px;
+
+    border-radius: 5px;
+    border: 2px solid var(--secondary);
+}
+
+.points {
+    font-size: large;
+    font-weight: bold;
+}
+
+.bonus {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 1em;
+}
+
+h1 {
+    margin: 0;
+}

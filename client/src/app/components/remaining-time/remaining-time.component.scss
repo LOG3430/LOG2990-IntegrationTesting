@@ -1,0 +1,17 @@
+#timer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    gap: 0.5em;
+    font-size: large;
+}
+
+#timer > p {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.panicking > * {
+    color: red;
+}

@@ -1,0 +1,32 @@
+<label class="margin" for="choix">Choix de réponses: </label><br />
+<div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="drag-container" cdkDrag *ngFor="let choice of getChoices(); let i = index">
+        <button mat-icon-button type="button" cdkDragHandle>
+            <mat-icon>reorder</mat-icon>
+        </button>
+        <mat-form-field class="choice">
+            <mat-label>Réponse {{ i + 1 }}: </mat-label>
+            <input
+                matInput
+                class="margin"
+                (keyup)="onKeyChoice($event, i)"
+                #message
+                maxlength="{{ maxChoiceLength() }}"
+                [formControl]="formControls['choice_' + (i + 1)]"
+            />
+            <mat-hint align="end">{{ message.value.length }} / {{ maxChoiceLength() }}</mat-hint>
+            <mat-error *ngIf="formControls['choice_' + (i + 1)].hasError('required')">Champ obligatoire</mat-error>
+            <mat-error *ngIf="formControls['choice_' + (i + 1)].hasError('whitespace')">Champ obligatoire non vide</mat-error>
+        </mat-form-field>
+        <div class="options-container">
+            <span class="slide-toggle">
+                <mat-slide-toggle (change)="onClickValidity(i)" checked="{{ getChoices()[i].isCorrect }}">Valide</mat-slide-toggle>
+            </span>
+            <button mat-icon-button class="bin" color="accent" matTooltip="Supprimer" *ngIf="getChoices().length > 2" (click)="deleteChoice(i + 1)">
+                <mat-icon>delete</mat-icon></button
+            ><br />
+        </div>
+    </div>
+</div>
+
+<button mat-raised-button color="primary" [disabled]="getChoices().length === 4" (click)="addChoice()">Ajouter un choix de réponse</button>

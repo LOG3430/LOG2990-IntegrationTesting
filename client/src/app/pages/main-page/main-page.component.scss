@@ -1,0 +1,59 @@
+.container {
+    min-height: 100vh;
+    height: auto;
+    background-color: var(--background);
+}
+
+.justified {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    margin-top: 10px;
+    text-align: center;
+    background-color: var(--secondary);
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+    padding: 10px;
+}
+
+.button:hover {
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+.team-name {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    color: var(--text);
+}
+
+.header-item {
+    justify-content: center;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--text);
+}
+
+.footer-item {
+    text-align: center;
+}
+
+.footer-item p {
+    color: var(--text);
+}
+
+.server-message {
+    justify-content: center;
+    width: 20%;
+    min-width: min-content;
+}
+
+#logo {
+    width: 23%;
+    height: 23%;
+}

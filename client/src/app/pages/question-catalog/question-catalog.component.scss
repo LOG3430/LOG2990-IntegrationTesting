@@ -1,0 +1,47 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div[actions] {
+    margin-left: 2em;
+}
+
+.mat-accordion {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+app-question-panel {
+    width: 80%;
+}
+
+.add-question {
+    width: 200px;
+    margin: 20px;
+}
+
+.add-question:hover {
+    background-color: var(--dark-background);
+    color: var(--text);
+}
+.filter {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mat-button-toggle {
+    background-color: var(--secondary);
+}
+
+.mat-button-toggle-checked {
+    background-color: var(--accent);
+}
+
+.last-modif-date {
+    margin-left: 5px;
+}

@@ -1,0 +1,14 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title class="title"><b> Mode aléatoire </b></mat-panel-title>
+        <mat-panel-description>
+            <ng-content select="[description]"></ng-content>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="infos">
+        <div><b>Description: </b>Jouez des questions aléatoires sélectionnées dans la banque de question !</div>
+        <div><b>Durée des questions à choix multiples: </b>{{ getDuration() }} secondes par question</div>
+        <div><b>Autres détails:</b> 5 questions par quiz en mode aléatoire</div>
+    </div>
+    <button mat-raised-button color="accent" class="random" (click)="play($event)">Jouer en mode aléatoire</button>
+</mat-expansion-panel>

@@ -1,0 +1,20 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title class="shortenable title">
+            {{ quiz.title }}
+        </mat-panel-title>
+        <mat-panel-description>
+            <ng-content select="[description]"></ng-content>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="breakable"><b>Description: </b>{{ quiz.description }}</div>
+    <div><b>Durée des questions à choix multiples: </b>{{ quiz.duration }} secondes par question</div>
+    <div><b>Liste de questions:</b></div>
+
+    <mat-accordion>
+        <app-question-panel *ngFor="let question of quiz.questions, index as i" [index]="i" 
+            [question]="question">
+        </app-question-panel>
+    </mat-accordion>
+</mat-expansion-panel>

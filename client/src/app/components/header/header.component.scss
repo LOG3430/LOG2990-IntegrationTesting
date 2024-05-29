@@ -1,0 +1,17 @@
+.header {
+    height: var(--header-height);
+
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.side {
+    margin: auto;
+    flex-basis: 10%;
+}
+
+.title {
+    margin: auto;
+    flex-basis: 80%;
+    align-content: center;
+}

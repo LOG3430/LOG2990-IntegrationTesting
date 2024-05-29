@@ -1,0 +1,34 @@
+.odd-row {
+    background: var(--alternative-1);
+}
+
+.even-row {
+    background: var(--alternative-0);
+}
+
+.table-header {
+    background: var(--primary);
+}
+mat-header-cell,
+mat-cell {
+    color: var(--text);
+}
+
+.stroke {
+    text-decoration: line-through;
+}
+.mat-column-username {
+    flex: 3;
+}
+.mat-column-points {
+    flex: 1;
+}
+.mat-column-nBonus {
+    flex: 1;
+}
+.mat-column-state {
+    flex: 1;
+}
+.mat-column-isMuted {
+    flex: 2;
+}

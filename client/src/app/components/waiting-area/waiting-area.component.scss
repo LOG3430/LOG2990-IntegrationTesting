@@ -1,0 +1,60 @@
+.player {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    background-color: var(--primary);
+
+    border: 2px solid var(--secondary);
+    border-radius: 5px;
+
+    text-align: center;
+
+    padding: 5px;
+    margin-top: 1%;
+}
+
+.name {
+    flex: 1;
+    font-size: larger;
+}
+
+.player > button {
+    flex: initial;
+}
+
+.isMe {
+    font-style: italic;
+}
+
+.gamecode {
+    display: inline-block;
+    font-size: x-large;
+    border-color: var(--primary);
+    border-radius: 2em;
+    border: 2px solid;
+    padding: 1%;
+    margin: 1%;
+    font-weight: 600;
+}
+
+.empty {
+    text-align: center;
+    padding: 15%;
+}
+
+.start-button {
+    text-align: center;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.start-buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+}

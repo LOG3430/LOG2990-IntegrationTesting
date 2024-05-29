@@ -1,0 +1,9 @@
+<div class="body">
+    <h1 class="title" mat-dialog-title>{{ currentUrl() }}</h1>
+    <mat-dialog-content class="message">
+        {{ this.message }}
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="accent" (click)="close()">OK</button>
+    </div>
+</div>

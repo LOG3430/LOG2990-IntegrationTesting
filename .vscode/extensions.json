@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "Angular.ng-template",
+        "johnpapa.Angular2",
+        "PKief.material-icon-theme",
+        "ecmel.vscode-html-css",
+        "Gruntfuggly.todo-tree",
+        "postman.postman-for-vscode"
+    ]
+}

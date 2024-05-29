@@ -1,0 +1,19 @@
+.body {
+    background-color: var(--text-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    color: var(--text-background);
+    background-color: var(--text);
+}
+.message {
+    color: var(--text);
+    margin-top: 10px;
+    word-break: break-word;
+}
+button:hover {
+    background-color: var(--dark-background);
+    color: var(--text);
+}

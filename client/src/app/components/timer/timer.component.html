@@ -1,0 +1,25 @@
+<div class="container">
+    <app-remaining-time></app-remaining-time>
+
+    <div *ngIf="canShowControls()" class="buttons">
+        <button [matTooltip]="pauseTooltip()" matTooltipPosition="above" mat-icon-button (click)="pause()">
+            <mat-icon color="accent">
+                {{ isPaused() ? 'play_arrow' : 'pause' }}
+            </mat-icon>
+        </button>
+        <button
+            matTooltip="Activer mode panique"
+            matTooltipPosition="above"
+            mat-icon-button
+            (click)="goPanic()"
+            color="accent"
+            [disabled]="!canPanic()"
+        >
+            <mat-icon>warning</mat-icon>
+        </button>
+    </div>
+
+    <div class="submit-container">
+        <p class="submit-tracker">{{ completion() }}% confirmés</p>
+    </div>
+</div>

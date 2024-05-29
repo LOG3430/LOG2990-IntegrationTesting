@@ -1,0 +1,26 @@
+.choice {
+    width: 70%;
+    margin-bottom: -1.5em;
+}
+
+.drag-container {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.options-container {
+    flex-direction: row;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.slide-toggle {
+    height: 100%;
+    margin-left: 5px;
+}
+
+.bin {
+    height: 100%;
+}

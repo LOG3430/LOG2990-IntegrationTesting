@@ -1,0 +1,34 @@
+<app-header>
+    <h1 title>Banque de question</h1>
+    <div left-buttons>
+        <button mat-icon-button matTooltip="Admin" color="accent" routerLink="/admin"><mat-icon>arrow_circle_left</mat-icon></button>
+    </div>
+</app-header>
+
+<div class="body">
+    <mat-button-toggle-group class="filter">
+        <mat-button-toggle (click)="filterMCQ()">QCM</mat-button-toggle>
+        <mat-button-toggle (click)="filterLAQ()">QRL</mat-button-toggle>
+        <mat-button-toggle (click)="filterAll()">TOUS</mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-accordion>
+        <app-question-panel
+            *ngFor="let question of filterList | questionSort; index as i"
+            [question]="question"
+            [index]="i"
+            [color]="getColorByType(question)"
+        >
+            <div class="last-modif-date">{{ question.lastModif | dateFormatter }}</div>
+            <div actions>
+                <button mat-icon-button matTooltip="Modifier" color="accent" (click)="modifyQuestion(question, $event)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Supprimer" color="accent" (click)="removeQuestion(question, $event)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </app-question-panel>
+    </mat-accordion>
+
+    <button mat-raised-button class="add-question" color="accent" (click)="addQuestion()">Ajouter une nouvelle question</button>
+</div>

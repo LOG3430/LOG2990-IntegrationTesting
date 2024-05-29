@@ -1,0 +1,22 @@
+<h2>Évalutation</h2>
+
+<mat-card class="evaluation-card">
+    <mat-card-header>
+        <mat-card-title><b>Question:</b> {{ getQuestionName() }} </mat-card-title>
+        <mat-card-subtitle><b>Joueur:</b> {{ getCurrentUsername() }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="answer">
+        <p><b>Réponse:</b> {{ getCurrentAnswer() }}</p>
+        <div><b>Pourcentage multiplié au pointage de la question:</b></div>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+        <div class="grading">
+            <button mat-raised-button [class.selected-none]="selectedGrade === 0" (click)="chooseGrade(0)"><b>0%</b></button>
+            <button mat-raised-button [class.selected-half]="selectedGrade === 50" (click)="chooseGrade(50)"><b>50%</b></button>
+            <button mat-raised-button [class.selected-all]="selectedGrade === 100" (click)="chooseGrade(100)"><b>100%</b></button>
+        </div>
+        <div class="next">
+            <button mat-raised-button color="primary" mat-button (click)="goToNextAnswer()" [disabled]="!isGraded()">Prochaine réponse</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,26 @@
+.mat-accordion {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+app-quiz-panel {
+    width: 80%;
+}
+div[description] {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.actions {
+    margin-left: 2em;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add-quiz:hover {
+    background-color: var(--dark-background);
+    color: var(--text);
+}

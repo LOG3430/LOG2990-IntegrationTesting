@@ -1,0 +1,43 @@
+<div class="table-container">
+    <mat-table #table [dataSource]="leaderboard" matSort (matSortChange)="onSort($event)" [matSortDisableClear]="true">
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef mat-sort-header SortActionDescription="Trier par nom"> Nom du joueur </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="[isDead(element) ? 'stroke' : '']"> {{ element.username }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="points">
+            <mat-header-cell *matHeaderCellDef mat-sort-header SortActionDescription="Trier par points"> Score </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.points }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nBonus">
+            <mat-header-cell *matHeaderCellDef mat-sort-header SortActionDescription="Trier par nombre de bonus"> Bonus </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.nBonus ?? 0 }} <mat-icon style="color:var(--star)">star</mat-icon></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+            <mat-header-cell *matHeaderCellDef mat-sort-header SortActionDescription="Trier par état"> État </mat-header-cell>
+            <mat-cell *matCellDef="let element"
+                ><mat-icon [matTooltip]="getTooltip(element.state)" [ngStyle]="{ color: getColor(element.state) }">circle</mat-icon></mat-cell
+            >
+        </ng-container>
+
+        <ng-container matColumnDef="isMuted">
+            <mat-header-cell *matHeaderCellDef> Clavardage </mat-header-cell>
+
+            <mat-cell *matCellDef="let element">
+                <button
+                    *ngIf="!isDead(element)"
+                    mat-icon-button
+                    (click)="mutePlayer(element.username)"
+                    [matTooltip]="element.isMuted ? 'Donner le droit de parole' : 'Retirer le droit de parole'"
+                >
+                    <mat-icon>{{ element.isMuted ? 'speaker_notes_off' : 'chat' }}</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="getColumns(); sticky: true" class="pretty-table" class="table-header"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: getColumns(); index as i" [ngClass]="[i % 2 ? 'even-row' : 'odd-row']"> </mat-row>
+    </mat-table>
+</div>

@@ -1,0 +1,17 @@
+.mat-expansion-panel {
+    background-color: var(--lightprimary);
+    margin-top: 10px;
+    width: 100%;
+}
+
+.mat-expansion-panel-header-title {
+    font-weight: bold;
+    max-width: max-content;
+}
+
+.mat-expansion-panel-header-description {
+    flex: 1;
+    justify-content: flex-end;
+
+    white-space: nowrap;
+}

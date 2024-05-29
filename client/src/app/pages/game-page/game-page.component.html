@@ -1,0 +1,36 @@
+<div class="page">
+    <app-header>
+        <h1 title>{{ getTitle() }}</h1>
+        <div left-buttons>
+            <button mat-icon-button matTooltip="Quitter la partie" color="accent" style="transform: rotate(180deg)" (click)="leaveGame()">
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </div>
+    </app-header>
+
+    <body *ngIf="hasRoom()">
+        <div class="container" [ngSwitch]="getState()">
+            <app-waiting-area *ngSwitchCase="State.Wait"></app-waiting-area>
+
+            <app-game-presentation *ngSwitchCase="State.Present"></app-game-presentation>
+
+            <div *ngIf="isOrganiser(); else playerView">
+                <app-result *ngSwitchCase="State.Play"></app-result>
+            </div>
+            <ng-template #playerView>
+                <app-play-area *ngSwitchCase="State.Play"></app-play-area>
+            </ng-template>
+
+            <div *ngIf="isOrganiser(); else playerEvaluationView">
+                <app-evaluation *ngSwitchCase="State.Evaluation"></app-evaluation>
+            </div>
+            <ng-template #playerEvaluationView>
+                <app-play-area *ngSwitchCase="State.Evaluation"></app-play-area>
+            </ng-template>
+
+            <app-result *ngSwitchCase="State.Result"></app-result>
+        </div>
+        <app-chat></app-chat>
+    </body>
+    <app-error *ngIf="!hasRoom()"></app-error>
+</div>

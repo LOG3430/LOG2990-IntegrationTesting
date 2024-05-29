@@ -1,0 +1,19 @@
+<div class="container justified">
+    <h1 class="header-item">KALIKO QUIZ</h1>
+    <img src="./assets/kaliko_accent.png" alt="Logo Projet" id="logo" />
+    <section id="server-message" class="justified">
+        <div class="justified"></div>
+    </section>
+
+    <button mat-raised-button color="primary" class="button" routerLink="/join-page">Joindre une partie</button>
+    <button mat-raised-button color="primary" mat-raised-button class="button" routerLink="/party/create">Créer une partie</button>
+    <button mat-raised-button color="primary" class="button" (click)="verifyAdmin()">Administrer les jeux</button>
+
+    <footer class="footer-item">
+        <h4 class="team-name">Équipe 104: Beebees</h4>
+        <p>
+            <span>Personne #1</span>, <span>Personne #2</span>, <span>Personne #3</span>, <span>Personne #4</span>,
+            <span>Personne #5</span>, <span>Personne #6</span>
+        </p>
+    </footer>
+</div>

@@ -1,0 +1,14 @@
+.admin-options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.admin-options > * {
+    margin-bottom: 10px;
+    width: 200px;
+}
+.admin-options > *:hover {
+    background-color: var(--primary);
+    color: var(--text);
+}

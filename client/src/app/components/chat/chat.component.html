@@ -1,0 +1,22 @@
+<div class="chat">
+    <div class="entete">{{ myName() }}</div>
+    <div class="message-scroll">
+        <div class="messages">
+            <div class="message" *ngFor="let message of messages" [ngClass]="{ isMe: isMe(message.sender), isOther: !isMe(message.sender) }">
+                <div class="infos">
+                    <span class="sender">{{ message.sender }}</span>
+                    <span class="time">{{ message.time | dateFormatter }}</span>
+                </div>
+                <div class="content" [ngClass]="{ isMe: isMe(message.sender), isOther: !isMe(message.sender) }">
+                    {{ message.content }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="message-box">
+        <input type="text" [(ngModel)]="content" placeholder="Message" (keypress)="handleEvent($event)" [disabled]="isMuted()" />
+        <button mat-icon-button color="primary" matTooltip="Envoyer le message" (click)="sendMessage()" [disabled]="isMuted()">
+            <mat-icon>send</mat-icon>
+        </button>
+    </div>
+</div>

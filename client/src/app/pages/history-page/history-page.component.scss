@@ -1,0 +1,40 @@
+::ng-deep .mat-sort-header-arrow {
+    color: var(--light-background);
+}
+.odd-row {
+    background: var(--alternative-1);
+}
+.even-row {
+    background: var(--alternative-0);
+}
+.table-header {
+    background: var(--secondary);
+}
+th {
+    color: var(--light-background);
+}
+.mat-column-gameName {
+    flex: 3;
+    word-wrap: break-word;
+    word-break: break-word;
+    padding: 10px;
+}
+.mat-column-startDate {
+    flex: 2;
+}
+.mat-column-numberPlayerBeginning {
+    flex: 1;
+}
+.mat-column-highestScore {
+    flex: 1;
+}
+.body {
+    margin-bottom: 10px;
+}
+.bordered {
+    background-color: var(--light-background);
+    border-radius: 10px;
+    border-color: var(--secondary);
+    border-width: 5px;
+    border-style: solid;
+}

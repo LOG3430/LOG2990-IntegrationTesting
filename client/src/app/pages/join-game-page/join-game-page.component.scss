@@ -1,0 +1,21 @@
+.items {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+.items > * {
+    width: 100%;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+mat-form-field {
+    margin-bottom: 5px;
+}
+.join:hover {
+    background-color: var(--primary);
+    color: var(--text);
+}

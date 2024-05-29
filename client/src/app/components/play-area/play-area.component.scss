@@ -1,0 +1,135 @@
+.play-area {
+    height: 100%;
+}
+
+#points {
+    grid-area: left-high;
+    height: 25%;
+    width: 25%;
+    align-self: center;
+    text-align: center;
+    margin: 10%;
+    color: var(--text);
+}
+
+app-remaining-time {
+    grid-area: right-high;
+    width: 50%;
+    justify-self: right;
+    align-self: center;
+    text-align: right;
+    color: var(--text);
+}
+
+#title {
+    grid-area: title;
+    text-align: center;
+    background-color: var(--primary);
+    border-radius: 5px;
+    color: var(--text);
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+#answer {
+    grid-area: center;
+    border: 5px solid var(--primary);
+    border-radius: 5px;
+    background-color: var(--background);
+    height: 100%;
+}
+
+#answer > * {
+    height: 100%;
+}
+
+.player-points {
+    float: left;
+    width: 100%;
+    text-align: left;
+    margin-left: 10px;
+    grid-area: left-footer;
+    align-self: center;
+    color: var(--text);
+}
+
+.number-question {
+    float: right;
+    width: 100%;
+    text-align: right;
+    margin-right: 10px;
+    grid-area: right-footer;
+    align-self: center;
+    color: var(--text);
+}
+
+#grid-container {
+    display: grid;
+    grid-template-areas:
+        'left-high middle-high right-high'
+        'title title title'
+        'center center center'
+        'left-footer center-footer right-footer';
+    grid-template-rows: 0.3fr 0.3fr 1fr 0.3fr;
+    gap: 10px;
+    height: 100%;
+    padding: 10px;
+}
+
+.confirm-button {
+    height: 40px;
+    grid-area: center-footer;
+    align-self: center;
+    font-size: 18px;
+}
+
+.choices {
+    width: 98%;
+    height: 30px;
+    margin: 5px;
+    background-color: white;
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    align-items: center;
+}
+
+.choices:hover {
+    background-color: var(--accent);
+}
+
+.mat-button-toggle-checked {
+    background-color: var(--accent) !important;
+}
+
+#mat-button-toggle-label-content {
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+#logo {
+    width: 400px;
+    height: 400px;
+}
+
+.logo-container {
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+textarea {
+    width: 100%;
+    height: 250px;
+    padding: 4px;
+    box-sizing: border-box;
+    border: 2px solid var(--background);
+    border-radius: 4px;
+    background-color: var(--background);
+    font-size: 24px;
+    resize: none;
+}
+
+#evaluation {
+    text-align: center;
+}

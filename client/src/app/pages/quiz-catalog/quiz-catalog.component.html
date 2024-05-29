@@ -1,0 +1,28 @@
+<app-header>
+    <h1 title>Gestionnaire de jeux</h1>
+    <div left-buttons>
+        <button mat-icon-button matTooltip="Admin" color="accent" routerLink="/admin"><mat-icon>arrow_circle_left</mat-icon></button>
+    </div>
+</app-header>
+<div class="content">
+    <mat-accordion>
+        <app-quiz-panel *ngFor="let quiz of quizzes | quizSort" [quiz]="quiz">
+            <div description>
+                <div class="last-modif-date">{{ quiz.lastModification | dateFormatter }}</div>
+                <div class="actions">
+                    <button mat-icon-button matTooltip="Exporter" color="accent" (click)="exportQuiz(quiz, $event)">
+                        <mat-icon>get_app</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Supprimer" color="accent" (click)="deleteQuiz(quiz, $event)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Modifier" color="accent" (click)="modifyQuiz(quiz, $event)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button matTooltip="Visibilité" color="accent" (click)="toggleVisibility(quiz, $event)">
+                        <mat-icon>{{ quiz.visibility ? 'visibility' : 'visibility_off' }}</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </app-quiz-panel>
+    </mat-accordion>
+    <button mat-raised-button class="add-quiz" color="accent" routerLink="/admin/quiz/create">Ajouter un nouveau quiz</button>
+</div>

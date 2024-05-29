@@ -1,0 +1,16 @@
+<div class="page">
+    <app-header>
+        <h1 title>Tester le jeu</h1>
+        <div left-buttons>
+            <button mat-icon-button matTooltip="Accueil" color="accent" routerLink="/home"><mat-icon>home</mat-icon></button>
+        </div>
+    </app-header>
+
+    <body *ngIf="hasRoom()">
+        <div class="container">
+            <app-play-area></app-play-area>
+        </div>
+        <app-chat></app-chat>
+    </body>
+    <app-error *ngIf="!hasRoom()"></app-error>
+</div>

@@ -1,0 +1,20 @@
+<body class="container">
+    <div class="chart-leaderboard-container">
+        <div class="chart-container bordered">
+            <mat-icon *ngIf="isGameOver()" style="transform: rotate(180deg)" matTooltip="Précédent" (click)="pastQuestion()"
+                >arrow_forward_ios</mat-icon
+            >
+            <app-bar-chart></app-bar-chart>
+            <mat-icon *ngIf="isGameOver()" matTooltip="Suivant" (click)="nextQuestion()">arrow_forward_ios</mat-icon>
+        </div>
+        <div class="leaderboard-timer-container">
+            <div class="leaderboard-container bordered">
+                <app-leaderboard></app-leaderboard>
+            </div>
+            <app-timer *ngIf="!isGameOver()" class="timer bordered"></app-timer>
+        </div>
+    </div>
+    <button mat-raised-button *ngIf="!isGameOver()" class="next-question" color="accent" (click)="passQuestion()" [disabled]="!canGoToNextQuestion()">
+        {{ getButtonText() }}
+    </button>
+</body>

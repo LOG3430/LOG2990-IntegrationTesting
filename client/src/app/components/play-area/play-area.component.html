@@ -1,0 +1,57 @@
+<div class="play-area" *ngIf="getCurrentQuestion(); else elseBlock" tabindex="0" autofocus (keypress)="handleKeyDown($event)">
+    <div id="grid-container">
+        <div id="title">
+            <h2>{{ getCurrentQuestion().text }} ({{ getCurrentQuestion().points }} points)</h2>
+        </div>
+        <app-remaining-time></app-remaining-time>
+
+        <div id="answer" [ngSwitch]="getCurrentQuestion().type">
+            <div *ngSwitchCase="'QCM'">
+                <app-answers *ngIf="results; else choices" [questionResults]="results"></app-answers>
+                <ng-template #choices>
+                    <div *ngFor="let choice of getCurrentQuestion().choices; let i = index">
+                        <mat-button-toggle
+                            class="choices"
+                            [ngClass]="{ selected: selectedChoices.includes(i) }"
+                            (click)="toggle(i)"
+                            [checked]="selectedChoices.includes(i)"
+                        >
+                            <span class="response">{{ i + 1 }}: {{ choice }} </span>
+                        </mat-button-toggle>
+                    </div>
+                </ng-template>
+            </div>
+
+            <div *ngSwitchCase="'QRL'">
+                <app-answers *ngIf="results; else qrltext" [questionResults]="results"></app-answers>
+                <ng-template #qrltext>
+                    <form>
+                        <textarea
+                            [disabled]="isSubmitted()"
+                            (keyup)="update($event)"
+                            #answer
+                            [attr.maxlength]="maxLengthAnswer"
+                            placeholder="Veuillez entrer votre réponse ici"
+                        ></textarea>
+                        <mat-hint align="end">{{ maxLengthAnswer - answer.value.length }}/{{ maxLengthAnswer }}</mat-hint>
+                        <div *ngIf="isWaitingEvaluation()">
+                            <p id="evaluation">L'organisateur corrige votre réponse.</p>
+                        </div>
+                    </form>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="player-points">{{ getUserScore() }} points</div>
+
+        <button mat-raised-button class="confirm-button" color="primary" [disabled]="!canSubmit()" (click)="submitAnswer()">
+            Confirmer ma réponse
+        </button>
+
+        <div class="number-question">Question {{ getCurrentQuestionIndex() + 1 }} / {{ getNumberOfQuestions() }}</div>
+    </div>
+</div>
+
+<ng-template #elseBlock class="play-area">
+    <app-error></app-error>
+</ng-template>
